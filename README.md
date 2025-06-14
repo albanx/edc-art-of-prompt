@@ -217,9 +217,11 @@ Workflows are reusable task templates that standardize common development patter
 3. Add to routing
 4. Create API endpoint
 5. Add to documentation
-
-## Folder Structure:
 ```
+
+```markdown
+## Folder Structure:
+
 src/features/{feature-name}/
 ├── components/
 │   ├── {FeatureName}.tsx
@@ -233,6 +235,7 @@ src/features/{feature-name}/
 └── index.ts
 ```
 
+```markdown
 ## Component Template:
 - TypeScript functional component
 - Props interface
@@ -300,44 +303,6 @@ export const use{Endpoint} = (params: {Endpoint}Request) => {
 ```
 ```
 
-**Example 3: Database Migration Workflow**
-
-`.cline/workflows/db-migration.md`:
-```markdown
-# Database Migration Workflow
-
-## Pre-Migration Checklist:
-- [ ] Backup current database
-- [ ] Review schema changes
-- [ ] Test rollback procedure
-- [ ] Check for breaking changes
-
-## Migration Steps:
-1. Generate migration file
-2. Add up/down migrations
-3. Update Prisma schema
-4. Generate TypeScript types
-5. Update seed data
-6. Test in development
-7. Document changes
-
-## Template:
-```sql
--- Migration: {description}
--- Author: {author}
--- Date: {date}
-
--- UP
-BEGIN;
-  -- Migration queries here
-COMMIT;
-
--- DOWN
-BEGIN;
-  -- Rollback queries here
-COMMIT;
-```
-```
 
 #### Using Workflows Effectively
 
@@ -352,277 +317,66 @@ COMMIT;
 that handles file uploads"
 ```
 
-**Chain Workflows**:
-```
-"First run the db-migration workflow to add a 'status' field, 
-then update the api-integration workflow for the affected endpoints"
-```
-
 ---
 
-## A More Realistic Example: How to Connect MCP Servers to Cline
+## More automation with MCP Servers.
 
-### Understanding MCP (Model Context Protocol)
+MCP (Model Context Protocol) enables Cline to interact with external tools and services, dramatically expanding its capabilities beyond just code generation.
 
-MCP enables Cline to interact with external tools and services, dramatically expanding its capabilities beyond just code generation.
+### Figma MCP Example: From Design to Code
 
-### Step-by-Step MCP Setup
-
-#### 1. **Install MCP Server**
+#### 1. **Install Figma MCP Server**
 
 ```bash
-# Install the MCP server package
-npm install -g @modelcontextprotocol/server
-
-# Or for a specific tool (e.g., filesystem access)
-npm install -g @modelcontextprotocol/server-filesystem
+# Install the MCP server figma
+npm install -g figma-developer-mcp
 ```
 
 #### 2. **Configure Cline Settings**
 
 **In VSCode**:
-1. Open Settings (Cmd/Ctrl + ,)
-2. Search for "Cline MCP"
-3. Add your MCP configuration
-
+1. Open Cline MCP server by clicking the icon 
+2. Click the Setting Gear icon
+3. Click configure MCP Servers to open the json configs
+4. Add the following configuration to the JSON to activate the MCP server
 **Example Configuration** (settings.json):
 ```json
 {
-  "cline.mcpServers": {
-    "filesystem": {
-      "command": "node",
+  "mcpServers": {
+    "Framelink Figma MCP": {
+      "command": "figma-developer-mcp",
       "args": [
-        "/path/to/mcp-server-filesystem/index.js",
-        "--allowed-directories",
-        "/Users/yourname/projects"
+        "--figma-api-key=API_KEY_FIGMA_ACCOUNT",
+        "--stdio"
       ],
-      "env": {
-        "NODE_ENV": "production"
-      }
-    },
-    "github": {
-      "command": "mcp-server-github",
-      "args": ["--token", "${env:GITHUB_TOKEN}"],
-      "env": {
-        "GITHUB_TOKEN": "your-token-here"
-      }
-    },
-    "database": {
-      "command": "mcp-server-postgres",
-      "args": [
-        "--connection-string",
-        "${env:DATABASE_URL}"
+      "autoApprove": [
+        "get_figma_data",
+        "download_figma_images"
       ]
     }
   }
 }
 ```
+5. For the `API_KEY_FIGMA_ACCOUNT` if you do not have a Figma account use the one provided during the presentation.
 
-#### 3. **Create Custom MCP Server**
+#### 3. **Create a React Component from Figma**
+Now that we have a MCP connected to Figma, we can prompt Cline to create a 1 to 1 React component from the Figma design.
 
-**Basic MCP Server Structure**:
-
-`my-mcp-server/index.js`:
-```javascript
-const { Server } = require('@modelcontextprotocol/server');
-
-class MyCustomServer extends Server {
-  constructor() {
-    super({
-      name: 'my-custom-server',
-      version: '1.0.0',
-      capabilities: {
-        tools: true,
-        resources: true
-      }
-    });
-  }
-
-  // Define available tools
-  async getTools() {
-    return [
-      {
-        name: 'analyze_code_quality',
-        description: 'Analyze code quality metrics',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            filePath: { type: 'string' },
-            metrics: { 
-              type: 'array',
-              items: { type: 'string' }
-            }
-          },
-          required: ['filePath']
-        }
-      }
-    ];
-  }
-
-  // Handle tool execution
-  async executeTool(name, params) {
-    switch(name) {
-      case 'analyze_code_quality':
-        return this.analyzeCodeQuality(params);
-      default:
-        throw new Error(`Unknown tool: ${name}`);
-    }
-  }
-
-  async analyzeCodeQuality({ filePath, metrics }) {
-    // Your implementation here
-    const results = {
-      complexity: 8,
-      maintainability: 85,
-      testCoverage: 92
-    };
-    
-    return {
-      success: true,
-      results
-    };
-  }
-}
-
-// Start the server
-const server = new MyCustomServer();
-server.start();
-```
-
-#### 4. **Practical MCP Use Cases**
-
-**Example 1: Database Query MCP**
-```javascript
-// Cline can now execute:
-"Query the database to find all users who signed up in the last 7 days 
-and create a summary report"
-
-// MCP handles the actual database connection and query execution
-```
-
-**Example 2: CI/CD Integration MCP**
+1. Open the following Demo link in Figma https://www.figma.com/design/jvew1EDxEPitba0oEtmFHq/EDC-Demo-Login-Form?node-id=3-1524&t=0VzNCWeCbn7mFJHf-0
+1. Copy a references link of the Figma design `Create account` button component
+    1. Double click the button component to select it
+    1. Right click `Copy as` => `Copy link to selection`
+3. Prompt Cline to generate the button component in React from the figma
 ```javascript
 // Cline can now:
-"Check the status of the latest deployment and rollback if there are 
-more than 5 errors in the last hour"
+"Using the figma link {PASTE LINK HERE} implement this button in a react component in shared folder"
 ```
 
-**Example 3: Documentation Generator MCP**
-```javascript
-// Cline can now:
-"Scan all components in src/components and generate a complete 
-API documentation with examples"
-```
 
-### Advanced MCP Patterns
 
-#### 1. **Chaining MCP Servers**
+## Live Demo
 
-```json
-{
-  "cline.mcpWorkflows": {
-    "full-stack-feature": [
-      {
-        "server": "database",
-        "action": "create-migration"
-      },
-      {
-        "server": "backend-api",
-        "action": "generate-endpoints"
-      },
-      {
-        "server": "frontend",
-        "action": "create-components"
-      },
-      {
-        "server": "testing",
-        "action": "generate-e2e-tests"
-      }
-    ]
-  }
-}
-```
-
-#### 2. **MCP Server Communication**
-
-```javascript
-// Enable servers to share context
-class CollaborativeMCPServer extends Server {
-  async shareContext(targetServer, data) {
-    return this.emit('context-share', {
-      target: targetServer,
-      data: data
-    });
-  }
-  
-  async onContextReceived(source, data) {
-    // Handle shared context from other servers
-    this.updateLocalContext(source, data);
-  }
-}
-```
-
-#### 3. **Security Best Practices**
-
-```javascript
-// Implement proper authentication
-class SecureMCPServer extends Server {
-  async authenticate(token) {
-    // Validate token
-    return await this.validateToken(token);
-  }
-  
-  async authorizeAction(user, action) {
-    // Check permissions
-    return this.checkPermissions(user, action);
-  }
-  
-  // Sanitize inputs
-  sanitizeInput(input) {
-    // Implement input validation
-    return this.validator.clean(input);
-  }
-}
-```
-
-### Troubleshooting MCP Connections
-
-**Common Issues and Solutions**:
-
-1. **Connection Timeout**
-   ```json
-   {
-     "cline.mcpServers": {
-       "slow-server": {
-         "command": "...",
-         "timeout": 30000  // Increase timeout to 30 seconds
-       }
-     }
-   }
-   ```
-
-2. **Permission Errors**
-   ```bash
-   # Grant necessary permissions
-   chmod +x /path/to/mcp-server
-   
-   # Check file access
-   ls -la ~/.cline/mcp/
-   ```
-
-3. **Debug Mode**
-   ```json
-   {
-     "cline.mcpDebug": true,
-     "cline.mcpLogLevel": "verbose"
-   }
-   ```
-
----
-
-## Live Demo Ideas
-
-### Demo 1: Build a Complete Feature (10 minutes)
+### Demo 1: Build a Complete Login form (10 minutes)
 1. Show existing codebase
 2. Write clear prompt for new feature
 3. Watch Cline generate:
