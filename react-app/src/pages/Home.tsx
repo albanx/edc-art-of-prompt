@@ -5,32 +5,48 @@ const Home: React.FC = () => {
   return (
     <div className="home-container">
       <header className="home-header">
-        <h1>Welcome to Our React App</h1>
-        <p className="home-subtitle">A modern React application built with Next.js and TypeScript</p>
+        <div className="hero-illustration">
+          <img src="/microsoft.png" alt="Microsoft AI Magic" className="hero-image" />
+        </div>
+        <h1>🎉 Welcome to the EDC AI & Cline Adventure!</h1>
+        <p className="home-subtitle">
+          Where Microsoft's European Development Center meets the future of AI-powered coding! 
+          Buckle up for a wild ride through the digital cosmos! 🚀
+        </p>
       </header>
       
       <main className="home-content">
         <section className="hero-section">
-          <h2>Getting Started</h2>
-          <p>
-            This is a sample home page with some demonstration content. 
-            The application is built using modern web technologies including:
-          </p>
-          <ul className="features-list">
-            <li>Next.js 15 with App Router</li>
-            <li>TypeScript for type safety</li>
-            <li>SCSS for enhanced styling</li>
-            <li>Component-based architecture</li>
-            <li>Responsive design principles</li>
-          </ul>
+          <div className="section-with-image">
+            <img src="/robot-coding.svg" alt="Robot Coding" className="section-image" />
+            <div className="section-text">
+              <h2>🤖 Meet Your New Coding Sidekick!</h2>
+              <p>
+                Forget coffee breaks - Cline never gets tired, never complains about deadlines, 
+                and definitely won't steal your lunch from the office fridge! Here's what makes 
+                our AI buddy absolutely amazing:
+              </p>
+              <ul className="features-list">
+                <li>🧠 Reads code faster than you can say "Stack Overflow"</li>
+                <li>⚡ Writes TypeScript while you're still thinking about breakfast</li>
+                <li>🎨 Makes your SCSS look prettier than a European sunset</li>
+                <li>🏗️ Builds components like a digital LEGO master</li>
+                <li>📱 Responsive design? More like "responsible" design!</li>
+              </ul>
+            </div>
+          </div>
         </section>
 
-        <section className="info-section">
-          <h3>Project Structure</h3>
+        <section className="cta-section">
+          <h3>🚀 Ready to Launch into the AI Future?</h3>
           <p>
-            This application follows best practices with organized folders for components and pages,
-            making it easy to scale and maintain as your project grows.
+            Join the EDC revolution where humans and AI collaborate to create digital magic! 
+            No capes required, but enthusiasm is mandatory! 
           </p>
+          <div className="cta-buttons">
+            <button className="cta-button primary">Start Coding with Cline! 🤖</button>
+            <button className="cta-button secondary">Learn More Magic ✨</button>
+          </div>
         </section>
       </main>
     </div>

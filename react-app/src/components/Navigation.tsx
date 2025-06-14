@@ -8,7 +8,7 @@ const Navigation: React.FC = () => {
       <div className="nav-container">
         <div className="nav-brand">
           <Link href="/" className="brand-link">
-            MyApp
+            🤖 EDC AI Lab
           </Link>
         </div>
         
