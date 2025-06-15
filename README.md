@@ -368,35 +368,25 @@ Now that we have a MCP connected to Figma, we can prompt Cline to create a 1 to 
     1. Right click `Copy as` => `Copy link to selection`
 3. Prompt Cline to generate the button component in React from the figma
 ```javascript
-// Cline can now:
 "Using the figma link {PASTE LINK HERE} implement this button in a react component in shared folder"
 ```
 
+#### 4. **Create a design system from the Figma**
+1. Let go a step further and generalize the Figma design by extracting the base design
+1. Copy the reference link to full Figma design `https://www.figma.com/design/jvew1EDxEPitba0oEtmFHq/EDC-Demo-Login-Form?node-id=3-1524&t=54NW2orpkYJnTqND-4`
+1. Prompt Cline to generate a design system based on the Figma:
+```
+"Using the figma link {PASTE LINK HERE} implement a base design system including the common components: checkbox, inputs, buttons. 
+Add as well the states like: hover, disable, active, selected.
+```
 
-
-## Live Demo
-
-### Demo 1: Build a Complete Login form (10 minutes)
-1. Show existing codebase
-2. Write clear prompt for new feature
-3. Watch Cline generate:
-   - Component structure
-   - API integration
-   - Tests
-   - Documentation
-4. Run and test the feature
-
-### Demo 2: Refactor Legacy Code (5 minutes)
-1. Show problematic code
-2. Create refactoring prompt with specific goals
-3. Review Cline's suggestions
-4. Apply changes incrementally
-
-### Demo 3: MCP in Action (7 minutes)
-1. Connect to database MCP
-2. Query data with natural language
-3. Generate reports
-4. Update documentation automatically
+#### 4. **Create a the login form**
+1. Ask Cline to implement the Login form using 
+1. Copy the reference link to full Figma design `https://www.figma.com/design/jvew1EDxEPitba0oEtmFHq/EDC-Demo-Login-Form?node-id=3-1525&t=54NW2orpkYJnTqND-4`
+1. Prompt Cline to generate a design system based on the Figma:
+```
+"Using the figma link {PASTE LINK HERE} implement the login form re-using the design system created."
+```
 
 ---
 
