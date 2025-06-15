@@ -126,7 +126,7 @@ Cline Rules are persistent instructions that guide the AI's behavior across all 
 
 #### Creating Effective Rules
 
-**Location**: `.cline/rules.md` in your project root
+**Location**: `.clinerules/rules.md` in your project root
 
 **Example Rules File**:
 
@@ -203,11 +203,11 @@ Workflows are reusable task templates that standardize common development patter
 
 #### Creating Custom Workflows
 
-**Location**: `.cline/workflows/`
+**Location**: `.clinerules/workflows/`
 
 **Example 1: New Feature Workflow**
 
-`.cline/workflows/new-feature.md`:
+`.clinerules/workflows/new-feature.md`:
 ```markdown
 # New Feature Workflow
 
@@ -247,7 +247,7 @@ src/features/{feature-name}/
 
 **Example 2: API Integration Workflow**
 
-`.cline/workflows/api-integration.md`:
+`.clinerules/workflows/api-integration.md`:
 ```markdown
 # API Integration Workflow
 

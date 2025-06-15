@@ -1,6 +1,6 @@
 # Security Audit Workflow for React/TypeScript Applications
 
-**File**: `.cline/workflows/security-audit.md`
+**File**: `.clinerules/workflows/security-audit.md`
 
 ## Description
 Comprehensive security audit workflow that checks your React/TypeScript application for common vulnerabilities, insecure patterns, and potential security risks. This workflow performs automated scans and generates detailed reports with remediation suggestions.
