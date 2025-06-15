@@ -249,8 +249,6 @@ src/features/{feature-name}/
 
 `.clinerules/workflows/api-integration.md`:
 ```markdown
-# API Integration Workflow
-
 ## Required Information:
 - Endpoint URL
 - HTTP Method
@@ -265,10 +263,11 @@ src/features/{feature-name}/
 5. Loading states
 6. Unit tests
 7. Integration tests
+```
 
-## Code Structure:
+#### Code Structure:
 
-### 1. Types Definition
+##### 1. Types Definition
 ```typescript
 // types/api/{endpoint}.types.ts
 export interface {Endpoint}Request {
@@ -280,7 +279,7 @@ export interface {Endpoint}Response {
 }
 ```
 
-### 2. API Client
+##### 2. API Client
 ```typescript
 // api/{endpoint}.api.ts
 export const {endpoint}Api = {
@@ -290,7 +289,7 @@ export const {endpoint}Api = {
 }
 ```
 
-### 3. React Query Hook
+##### 3. React Query Hook
 ```typescript
 // hooks/use{Endpoint}.ts
 export const use{Endpoint} = (params: {Endpoint}Request) => {
@@ -301,8 +300,6 @@ export const use{Endpoint} = (params: {Endpoint}Request) => {
   })
 }
 ```
-```
-
 
 #### Using Workflows Effectively
 
