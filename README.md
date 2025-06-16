@@ -126,7 +126,7 @@ Cline Rules are persistent instructions that guide the AI's behavior across all 
 
 #### Creating Effective Rules
 
-**Location**: `.cline/rules.md` in your project root
+**Location**: `.clinerules/rules.md` in your project root
 
 **Example Rules File**:
 
@@ -203,11 +203,11 @@ Workflows are reusable task templates that standardize common development patter
 
 #### Creating Custom Workflows
 
-**Location**: `.cline/workflows/`
+**Location**: `.clinerules/workflows/`
 
 **Example 1: New Feature Workflow**
 
-`.cline/workflows/new-feature.md`:
+`.clinerules/workflows/new-feature.md`:
 ```markdown
 # New Feature Workflow
 
@@ -247,10 +247,8 @@ src/features/{feature-name}/
 
 **Example 2: API Integration Workflow**
 
-`.cline/workflows/api-integration.md`:
+`.clinerules/workflows/api-integration.md`:
 ```markdown
-# API Integration Workflow
-
 ## Required Information:
 - Endpoint URL
 - HTTP Method
@@ -265,10 +263,11 @@ src/features/{feature-name}/
 5. Loading states
 6. Unit tests
 7. Integration tests
+```
 
-## Code Structure:
+#### Code Structure:
 
-### 1. Types Definition
+##### 1. Types Definition
 ```typescript
 // types/api/{endpoint}.types.ts
 export interface {Endpoint}Request {
@@ -280,7 +279,7 @@ export interface {Endpoint}Response {
 }
 ```
 
-### 2. API Client
+##### 2. API Client
 ```typescript
 // api/{endpoint}.api.ts
 export const {endpoint}Api = {
@@ -290,7 +289,7 @@ export const {endpoint}Api = {
 }
 ```
 
-### 3. React Query Hook
+##### 3. React Query Hook
 ```typescript
 // hooks/use{Endpoint}.ts
 export const use{Endpoint} = (params: {Endpoint}Request) => {
@@ -301,8 +300,6 @@ export const use{Endpoint} = (params: {Endpoint}Request) => {
   })
 }
 ```
-```
-
 
 #### Using Workflows Effectively
 
