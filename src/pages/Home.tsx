@@ -3,6 +3,8 @@
 import React from 'react';
 import './Home.scss';
 import Button from '../components/Button';
+import Checkbox from '../components/Checkbox';
+import Input from '../components/Input';
 
 const Home: React.FC = () => {
   return (
@@ -20,14 +22,78 @@ const Home: React.FC = () => {
       
       <main className="home-content">
         <section className="component-section">
-          <h3>List of present react components</h3>
-          <div className="cta-buttons">
-            <Button variant="primary" onClick={() => console.log('Start Coding clicked!')}>
-              Simple button
-            </Button>
-            <Button variant="secondary" onClick={() => console.log('Learn More clicked!')}>
-             Secondary button
-            </Button>
+          <h3>Design System Components</h3>
+          
+          <div className="component-demo">
+            <h4>Buttons</h4>
+            <div className="component-group">
+              <Button variant="primary" onClick={() => console.log('Primary button clicked!')}>
+                Primary Button
+              </Button>
+              <Button variant="secondary" onClick={() => console.log('Secondary button clicked!')}>
+                Secondary Button
+              </Button>
+            </div>
+          </div>
+
+          <div className="component-demo">
+            <h4>Checkboxes</h4>
+            <div className="component-group">
+              <Checkbox 
+                state="unselected" 
+                active={true} 
+                showLabel={false}
+                onChange={(checked) => console.log('Checkbox 1:', checked)}
+              />
+              <Checkbox 
+                state="selected" 
+                active={true} 
+                showLabel={false}
+                onChange={(checked) => console.log('Checkbox 2:', checked)}
+              />
+              <Checkbox 
+                state="mixed" 
+                active={true} 
+                showLabel={false}
+                onChange={(checked) => console.log('Checkbox 3:', checked)}
+              />
+              <Checkbox 
+                state="unselected" 
+                active={true} 
+                showLabel={true}
+                label="With Label"
+                onChange={(checked) => console.log('Checkbox with label:', checked)}
+              />
+              <Checkbox 
+                state="selected" 
+                active={false} 
+                showLabel={true}
+                label="Inactive"
+                onChange={(checked) => console.log('Inactive checkbox:', checked)}
+              />
+            </div>
+          </div>
+
+          <div className="component-demo">
+            <h4>Input Fields</h4>
+            <div className="component-group">
+              <Input 
+                placeholder="Enter your text"
+                onChange={(value) => console.log('Input 1:', value)}
+              />
+              <Input 
+                placeholder="Password"
+                type="password"
+                icon="eye"
+                onChange={(value) => console.log('Password input:', value)}
+              />
+              <Input 
+                placeholder="Disabled input"
+                disabled={true}
+                helperText="This field is disabled"
+                onChange={(value) => console.log('Disabled input:', value)}
+              />
+            </div>
           </div>
         </section>
 

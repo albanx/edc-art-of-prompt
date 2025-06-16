@@ -1,0 +1,233 @@
+.signup-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background-attachment: fixed;
+}
+
+.signup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 80px); // Account for navigation height
+  padding: 2rem;
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 561px;
+  background: #FFFFFF;
+  border: 1px solid #CBD4E6;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 
+    0px 12px 24px 0px rgba(27, 59, 119, 0.05),
+    0px 24px 60px 0px rgba(6, 47, 125, 0.05),
+    0px 2px 4px 0px rgba(7, 4, 146, 0.1);
+
+  @media (max-width: 768px) {
+    padding: 24px;
+    margin: 1rem;
+  }
+}
+
+.signup-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+
+  .title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .signup-title {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.364;
+    color: #6E7491;
+    margin: 0;
+    flex: 1;
+  }
+
+  .close-button {
+    width: 32px;
+    height: 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6E7491;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      background-color: #F5F7FA;
+      color: #605DEC;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .signup-description {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.364;
+    color: #7C8DB0;
+    margin: 0;
+  }
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+
+  .checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .create-account-btn {
+    width: 100%;
+    margin-top: 8px;
+  }
+}
+
+.social-signup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 8px;
+
+  .divider-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    width: 100%;
+
+    .divider-line {
+      flex: 1;
+      height: 1px;
+      background-color: #CBD4E6;
+    }
+
+    .divider-text {
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.364;
+      color: #7C8DB0;
+      white-space: nowrap;
+    }
+  }
+
+  .social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .social-button {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      padding: 12px 20px;
+      border: 1px solid #605DEC;
+      background: transparent;
+      color: #605DEC;
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 1.364;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background-color: #605DEC;
+        color: #FAFAFA;
+
+        svg path {
+          fill: currentColor;
+        }
+      }
+
+      svg {
+        width: 18px;
+        height: 18px;
+        flex-shrink: 0;
+      }
+
+      &.google-button svg path {
+        &:nth-child(1) { fill: #4285F4; }
+        &:nth-child(2) { fill: #34A853; }
+        &:nth-child(3) { fill: #FBBC05; }
+        &:nth-child(4) { fill: #EB4335; }
+      }
+
+      &.apple-button svg path {
+        fill: #27273F;
+      }
+
+      &.facebook-button svg path {
+        fill: #407AEA;
+      }
+
+      &:hover {
+        &.google-button,
+        &.apple-button,
+        &.facebook-button {
+          svg path {
+            fill: #FAFAFA;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .signup-container {
+    padding: 1rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+
+  .signup-form {
+    .signup-header {
+      .signup-title {
+        font-size: 20px;
+      }
+
+      .signup-description {
+        font-size: 16px;
+      }
+    }
+
+    .social-signup {
+      .social-buttons {
+        .social-button {
+          font-size: 16px;
+          padding: 10px 16px;
+        }
+      }
+    }
+  }
+}
