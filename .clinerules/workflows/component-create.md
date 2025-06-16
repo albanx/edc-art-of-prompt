@@ -1,6 +1,14 @@
-# Simple Component Generator Workflow
+# Step 1: Gather Information
 
-**File**: `.cline/workflows/component.md`
+Gets the required information to create the component.
+
+```xml
+<ask_followup_question>
+<question>Please provide the component name, Example: Button</question>
+</ask_followup_question>
+```
+
+# Step 2: Create component
 
 ## Description
 Quickly generates a React TypeScript component with SCSS styling and tests.
@@ -108,41 +116,6 @@ export const {ComponentName}: React.FC<{ComponentName}Props> = ({
   return (
     <div className={styles.{componentName}}>
       {/* Component content */}
-    </div>
-  );
-};
-```
-
-### List Component
-```typescript
-import React from 'react';
-import styles from './{ComponentName}.scss';
-
-interface {ComponentName}Item {
-  id: string;
-  // other fields
-}
-
-interface {ComponentName}Props {
-  items: {ComponentName}Item[];
-  onItemClick?: (item: {ComponentName}Item) => void;
-}
-
-export const {ComponentName}: React.FC<{ComponentName}Props> = ({ 
-  items,
-  onItemClick 
-}) => {
-  return (
-    <div className={styles.{componentName}}>
-      {items.map((item) => (
-        <div 
-          key={item.id} 
-          className={styles.item}
-          onClick={() => onItemClick?.(item)}
-        >
-          {/* Item content */}
-        </div>
-      ))}
     </div>
   );
 };
