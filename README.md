@@ -106,7 +106,7 @@ Pattern: [Preferred approach]
 
 ---
 
-## What Does It Mean for Me: Some Automation
+## More automation
 
 ### Transform Your Development Workflow
 
@@ -354,7 +354,7 @@ npm install -g figma-developer-mcp
   }
 }
 ```
-5. For the `API_KEY_FIGMA_ACCOUNT` if you do not have a Figma account use the one provided during the presentation.
+5. For the `API_KEY_FIGMA_ACCOUNT` will be provided during the presentation.
 
 #### 3. **Create a React Component from Figma**
 Now that we have a MCP connected to Figma, we can prompt Cline to create a 1 to 1 React component from the Figma design.
