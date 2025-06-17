@@ -1,0 +1,97 @@
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 252px;
+
+  &__field-container {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 8px 12px;
+    background-color: #FFFFFF;
+    border: 1px solid #A1B0CC;
+    border-radius: 4px;
+    transition: border-color 0.2s ease;
+
+    &:focus-within {
+      border-color: #605DEC;
+    }
+  }
+
+  &__field {
+    flex: 1;
+    height: 32px;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.364;
+    color: #333333;
+
+    &::placeholder {
+      color: #7C8DB0;
+    }
+
+    &:disabled {
+      color: #A1B0CC;
+      cursor: not-allowed;
+
+      &::placeholder {
+        color: #A1B0CC;
+      }
+    }
+  }
+
+  &__icon-button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    color: #6E7491;
+    transition: color 0.2s ease, background-color 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: #F5F7FA;
+      color: #605DEC;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      color: #A1B0CC;
+    }
+  }
+
+  &__eye-icon {
+    width: 20px;
+    height: 14px;
+  }
+
+  &__helper-text {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.364;
+    color: #7C8DB0;
+    margin-left: 12px;
+  }
+
+  &--disabled {
+    .input__field-container {
+      background-color: #F5F7FA;
+      border-color: #E1E5EB;
+    }
+  }
+
+  // Hover state for the container
+  &:not(&--disabled):hover .input__field-container {
+    border-color: #6E7491;
+  }
+}

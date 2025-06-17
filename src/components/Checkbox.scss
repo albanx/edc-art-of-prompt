@@ -1,0 +1,76 @@
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  cursor: pointer;
+  user-select: none;
+
+  &--inactive {
+    cursor: default;
+  }
+
+  &__box {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #A1B0CC;
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: border-color 0.2s ease;
+  }
+
+  &--active &__box {
+    border-color: #6E7491;
+  }
+
+  &--inactive &__box {
+    border-color: #A1B0CC;
+  }
+
+  &__check {
+    width: 8px;
+    height: 8px;
+    background-color: #605DEC;
+    border-radius: 1px;
+  }
+
+  &--inactive &__check {
+    background-color: #A1B0CC;
+  }
+
+  &__mixed {
+    width: 8px;
+    height: 2px;
+    background-color: #605DEC;
+    border-radius: 1px;
+  }
+
+  &--inactive &__mixed {
+    background-color: #A1B0CC;
+  }
+
+  &__label {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.364;
+    color: #6E7491;
+  }
+
+  &--inactive &__label {
+    color: #A1B0CC;
+  }
+
+  // Hover effects for active checkboxes
+  &--active:hover &__box {
+    border-color: #605DEC;
+  }
+
+  &--active:hover &__label {
+    color: #333333;
+  }
+}

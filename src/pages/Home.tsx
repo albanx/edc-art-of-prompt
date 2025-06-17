@@ -1,5 +1,10 @@
+'use client';
+
 import React from 'react';
 import './Home.scss';
+import Button from '../components/Button';
+import Checkbox from '../components/Checkbox';
+import Input from '../components/Input';
 
 const Home: React.FC = () => {
   return (
@@ -16,23 +21,78 @@ const Home: React.FC = () => {
       </header>
       
       <main className="home-content">
-        <section className="hero-section">
-          <div className="section-with-image">
-            <img src="/robot-coding.svg" alt="Robot Coding" className="section-image" />
-            <div className="section-text">
-              <h2>🤖 Meet Your New Coding Sidekick!</h2>
-              <p>
-                Forget coffee breaks - Cline never gets tired, never complains about deadlines, 
-                and definitely won't steal your lunch from the office fridge! Here's what makes 
-                our AI buddy absolutely amazing:
-              </p>
-              <ul className="features-list">
-                <li>🧠 Reads code faster than you can say "Stack Overflow"</li>
-                <li>⚡ Writes TypeScript while you're still thinking about breakfast</li>
-                <li>🎨 Makes your SCSS look prettier than a European sunset</li>
-                <li>🏗️ Builds components like a digital LEGO master</li>
-                <li>📱 Responsive design? More like "responsible" design!</li>
-              </ul>
+        <section className="component-section">
+          <h3>Design System Components</h3>
+          
+          <div className="component-demo">
+            <h4>Buttons</h4>
+            <div className="component-group">
+              <Button variant="primary" onClick={() => console.log('Primary button clicked!')}>
+                Primary Button
+              </Button>
+              <Button variant="secondary" onClick={() => console.log('Secondary button clicked!')}>
+                Secondary Button
+              </Button>
+            </div>
+          </div>
+
+          <div className="component-demo">
+            <h4>Checkboxes</h4>
+            <div className="component-group">
+              <Checkbox 
+                state="unselected" 
+                active={true} 
+                showLabel={false}
+                onChange={(checked) => console.log('Checkbox 1:', checked)}
+              />
+              <Checkbox 
+                state="selected" 
+                active={true} 
+                showLabel={false}
+                onChange={(checked) => console.log('Checkbox 2:', checked)}
+              />
+              <Checkbox 
+                state="mixed" 
+                active={true} 
+                showLabel={false}
+                onChange={(checked) => console.log('Checkbox 3:', checked)}
+              />
+              <Checkbox 
+                state="unselected" 
+                active={true} 
+                showLabel={true}
+                label="With Label"
+                onChange={(checked) => console.log('Checkbox with label:', checked)}
+              />
+              <Checkbox 
+                state="selected" 
+                active={false} 
+                showLabel={true}
+                label="Inactive"
+                onChange={(checked) => console.log('Inactive checkbox:', checked)}
+              />
+            </div>
+          </div>
+
+          <div className="component-demo">
+            <h4>Input Fields</h4>
+            <div className="component-group">
+              <Input 
+                placeholder="Enter your text"
+                onChange={(value) => console.log('Input 1:', value)}
+              />
+              <Input 
+                placeholder="Password"
+                type="password"
+                icon="eye"
+                onChange={(value) => console.log('Password input:', value)}
+              />
+              <Input 
+                placeholder="Disabled input"
+                disabled={true}
+                helperText="This field is disabled"
+                onChange={(value) => console.log('Disabled input:', value)}
+              />
             </div>
           </div>
         </section>
@@ -44,8 +104,12 @@ const Home: React.FC = () => {
             No capes required, but enthusiasm is mandatory! 
           </p>
           <div className="cta-buttons">
-            <button className="cta-button primary">Start Coding with Cline! 🤖</button>
-            <button className="cta-button secondary">Learn More Magic ✨</button>
+            <Button variant="primary" onClick={() => console.log('Start Coding clicked!')}>
+              Start Coding with Cline! 🤖
+            </Button>
+            <Button variant="secondary" onClick={() => console.log('Learn More clicked!')}>
+              Learn More Magic ✨
+            </Button>
           </div>
         </section>
       </main>
