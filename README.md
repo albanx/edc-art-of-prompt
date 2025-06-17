@@ -322,6 +322,13 @@ MCP (Model Context Protocol) enables Cline to interact with external tools and s
 
 ### Figma MCP Example: From Design to Code
 
+#### 0. **Run the sample React App**
+
+1. Check out the following repo https://github.com/albanx/edc-art-of-prompt
+1. Run `npm i` and `npm run dev`
+1. React app will be running on http://localhost:3000
+
+
 #### 1. **Install Figma MCP Server**
 
 ```bash
